@@ -11,10 +11,10 @@ class LocationSelection extends StatefulWidget {
   final IconData leadingIcon;
   final IconData refreshIcon;
   final IconData addIcon;
-  final Function? onTapLeadingIcon;
+  final Function()? onTapLeadingIcon;
   final Function(LocationSelectionState state)? onTapText;
   final Function()? onTapRefreshIcon;
-  final Function? onTapAddIcon;
+  final Function()? onTapAddIcon;
 
   const LocationSelection({
     Key? key,
@@ -49,9 +49,9 @@ class _LocationSelectionState extends State<LocationSelection> {
   IconData get leadingIcon => widget.leadingIcon;
   IconData get refreshIcon => widget.refreshIcon;
   IconData get addIcon => widget.addIcon;
-  Function? get onTapLeadingIcon => widget.onTapLeadingIcon;
+  Function()? get onTapLeadingIcon => widget.onTapLeadingIcon;
   Function()? get onTapRefreshIcon => widget.onTapRefreshIcon;
-  Function? get onTapAddIcon => widget.onTapAddIcon;
+  Function()? get onTapAddIcon => widget.onTapAddIcon;
   Function(LocationSelectionState state)? get onTapText => widget.onTapText;
   TextStyle get textStyle => widget.textStyle;
 
@@ -61,11 +61,9 @@ class _LocationSelectionState extends State<LocationSelection> {
   //************ Widgets ************//
   Widget _leadingIconButton() {
     return IconButton(
-        onPressed: () => onTapLeadingIcon,
-        icon: Icon(
-          leadingIcon,
-          color: iconColor,
-        ));
+        onPressed:
+            (onTapLeadingIcon != null) ? () => onTapLeadingIcon!() : null,
+        icon: Icon(leadingIcon, color: iconColor));
   }
 
   Widget _refreshIconButton() {
@@ -77,7 +75,8 @@ class _LocationSelectionState extends State<LocationSelection> {
 
   Widget _addIconButton() {
     return IconButton(
-        onPressed: () => onTapAddIcon, icon: Icon(addIcon, color: iconColor));
+        onPressed: (onTapAddIcon != null) ? () => onTapAddIcon!() : null,
+        icon: Icon(addIcon, color: iconColor));
   }
 
   Widget _refreshIndicator() {
@@ -86,7 +85,8 @@ class _LocationSelectionState extends State<LocationSelection> {
 
   Widget _text() {
     return TextButton(
-        onPressed: () => onTapText,
+        onPressed:
+            (onTapText != null) ? () => onTapText!(controller.state) : null,
         child: Text(controller.text, style: textStyle));
   }
 

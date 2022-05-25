@@ -57,6 +57,60 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  Future<void> onTapText(LocationSelectionState state) async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Text"),
+            content: Text("You taped text !!!, State is ${state.toString()}"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Ok"))
+            ],
+          );
+        });
+  }
+
+  Future<void> onTapAdd() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Add"),
+            content: const Text("You taped add button !!!"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Ok"))
+            ],
+          );
+        });
+  }
+
+  Future<void> onTapLeading() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Leading"),
+            content: const Text("You taped leading icon !!!"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Ok"))
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
               LocationSelection(
                 controller: controller,
                 onTapRefreshIcon: () => onTapRefresh(),
+                onTapAddIcon: () => onTapAdd(),
+                onTapLeadingIcon: () => onTapLeading(),
+                onTapText: (state) => onTapText(state),
               ),
               const SizedBox(height: 20),
               ElevatedButton(

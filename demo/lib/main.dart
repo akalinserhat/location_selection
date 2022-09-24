@@ -31,11 +31,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late LocationSelectionController controller;
+  // late LocationSelectionController controller;
 
   @override
   void initState() {
-    controller = LocationSelectionController(text: "Unknown Address");
+    // controller = LocationSelectionController(text: "Unknown Address");
     super.initState();
   }
 
@@ -123,40 +123,36 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              LocationSelection(
-                controller: controller,
-                onTapRefreshIcon: () => onTapRefresh(),
-                onTapAddIcon: () => onTapAdd(),
-                onTapLeadingIcon: () => onTapLeading(),
-                onTapText: (state) => onTapText(state),
+              const LocationSelection(
+                text: Text("Deneme"),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  controller.setState(
-                    state: LocationSelectionState.refreshing,
-                    text: "",
-                  );
+                  // // controller.setState(
+                  //   state: LocationSelectionState.refreshing,
+                  //   text: "",
+                  // );
                 },
                 child: const Text("Refreshing"),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  controller.setState(
-                    state: LocationSelectionState.unknownAddress,
-                    text: "Unknown Address",
-                  );
+                  // controller.setState(
+                  //   state: LocationSelectionState.unknownAddress,
+                  //   text: "Unknown Address",
+                  // );
                 },
                 child: const Text("Unknown Adress"),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  controller.setState(
-                    state: LocationSelectionState.knownAddress,
-                    text: "Known Address",
-                  );
+                  // controller.setState(
+                  //   state: LocationSelectionState.knownAddress,
+                  //   text: "Known Address",
+                  // );
                 },
                 child: const Text("Known Adress"),
               )

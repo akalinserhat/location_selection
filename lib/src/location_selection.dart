@@ -21,7 +21,7 @@ class LocationSelection extends StatelessWidget {
         icon: CircleAvatar(
             backgroundColor: Colors.transparent,
             child: Icon(Icons.keyboard_arrow_down))),
-    this.height = 45,
+    this.height = 55,
     this.iconSize = 20,
     this.color = Colors.blueAccent,
     this.boxDecoration = const BoxDecoration(
@@ -30,12 +30,14 @@ class LocationSelection extends StatelessWidget {
   }) : super(key: key);
 
   Widget _content(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        leadingIcon,
-        text,
-        prefixIcon,
+        SizedBox(width: 50, child: leadingIcon),
+        SizedBox(width: size.width - 132, child: text),
+        SizedBox(width: 50, child: prefixIcon),
       ],
     );
   }

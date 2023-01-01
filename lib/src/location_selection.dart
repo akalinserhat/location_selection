@@ -33,7 +33,7 @@ class LocationSelection extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(width: 50, child: leadingIcon),
         SizedBox(width: size.width - 132, child: text),
